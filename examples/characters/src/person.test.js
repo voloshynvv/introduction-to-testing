@@ -5,16 +5,31 @@ vi.mock('uuid', () => ({
   v4: () => 'id',
 }));
 
-// Remove the `todo` from the `describe` to run the tests.
+const firstName = 'Grace';
+const lastName = 'Hopper';
+
 describe('Person', () => {
-  // This test will fail. Why?
   it('should create a person with a first name and last name', () => {
-    const person = new Person('Grace', 'Hopper');
+    const person = new Person(firstName, lastName);
 
     expect(person).toEqual({
       id: 'id',
-      firstName: 'Grace',
-      lastName: 'Hopper',
+      firstName,
+      lastName,
     });
+  });
+
+  it('throws an error if firstName or lastName is missing', () => {
+    expect(() => new Person(firstName)).toThrowError(
+      'First name and last name are required',
+    );
+
+    expect(() => new Person()).toThrow('First name and last name are required');
+  });
+
+  it('returns fullname', () => {
+    const person = new Person(firstName, lastName);
+
+    expect(person.fullName).toBe(`${firstName} ${lastName}`);
   });
 });
