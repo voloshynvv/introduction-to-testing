@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [svelte(), react()],
   test: {
     globals: true,
-    environment: 'happy-dom',
+    environment: 'jsdom',
     setupFiles: ['@testing-library/jest-dom/vitest'],
   },
 });
