@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { Character } from './character.js';
+import { Person } from './person.js';
 
 const firstName = 'John';
 const lastName = 'Doe';
@@ -57,5 +58,10 @@ describe('Character', () => {
     character.levelUp();
 
     expect(character.lastModified).not.toBe(initialLastModified);
+  });
+
+  it('inherits from Person', () => {
+    const character = new Character(firstName, lastName, role);
+    expect(character).toBeInstanceOf(Person);
   });
 });
