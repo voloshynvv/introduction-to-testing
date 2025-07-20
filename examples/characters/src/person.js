@@ -6,7 +6,7 @@ export class Person {
       throw new Error('First name and last name are required');
     }
 
-    this.id = 'person-' + id();
+    this.id = id();
     this.firstName = firstName;
     this.lastName = lastName;
   }
